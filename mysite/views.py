@@ -2,6 +2,7 @@ from django.template.loader import get_template
 from django.template import Context
 import datetime
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 
 def hello(request):
     return HttpResponse("Hello world")
@@ -12,10 +13,13 @@ def hello(request):
 #    return HttpResponse(html)
 
 def current_datetime(request):
-    now = datetime.datetime.now()
-    t = get_template('current_datetime.html')
-    html = t.render(Context({'current_date': now}))
-    return HttpResponse(html)
+    #now = datetime.datetime.now()
+    #t = get_template('current_datetime.html')
+    #html = t.render(Context({'current_date': now}))
+    #return HttpResponse(html)
+    #return render_to_response('current_datetime.html', {'current_date': now})
+    current_date = datetime.datetime.now() 
+    return render_to_response('current_datetime.html', locals() )
 
 def hours_ahead(request, offset):
     #try:
