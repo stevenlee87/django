@@ -5,6 +5,8 @@
 {% block content %}
 <p>In {{ hour_offset }} hour(s), it will be {{ next_time }}.</p>
 {% endblock %}
+
+{% block footer %} <b>This is the begin of footer.</b> {{ block.super }} <br/> <b>This is the end of footer.</b> {% endblock %} 
 {% comment %}
 {% block footer %}
 <p> test footer </p>
