@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     ('^hello/$', hello),
     ('^time/$', current_datetime),
     ('^time/plus/(\d{1,2})/$', hours_ahead),
-	('^admin/', include(admin.site.urls)),
+    ('^admin/', include(admin.site.urls)),
 )
