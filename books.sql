@@ -124,7 +124,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$12000$zfoo1suao9bI$2xwnUwqKpYIUXbSF+lEX8m9KzvNBkbDRIaJY6A7RahQ=','2014-06-29 05:07:45',1,'root','','','stevenlee87@126.com',1,1,'2014-06-26 10:39:39');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$12000$zfoo1suao9bI$2xwnUwqKpYIUXbSF+lEX8m9KzvNBkbDRIaJY6A7RahQ=','2014-06-28 06:38:29',1,'root','','','stevenlee87@126.com',1,1,'2014-06-26 10:39:39');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +195,7 @@ CREATE TABLE `books_author` (
   `last_name` varchar(40) NOT NULL,
   `email` varchar(75) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +204,7 @@ CREATE TABLE `books_author` (
 
 LOCK TABLES `books_author` WRITE;
 /*!40000 ALTER TABLE `books_author` DISABLE KEYS */;
-INSERT INTO `books_author` VALUES (1,'steven','lee','');
+INSERT INTO `books_author` VALUES (1,'steven','lee','stevenlee87@126.com'),(2,'harry','wang','harrywang@gmail.com');
 /*!40000 ALTER TABLE `books_author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,10 +219,10 @@ CREATE TABLE `books_book` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(100) NOT NULL,
   `publisher_id` int(11) NOT NULL,
-  `publication_date` date default NULL,
+  `publication_date` date NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `books_book_81b79144` (`publisher_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `books_book` (
 
 LOCK TABLES `books_book` WRITE;
 /*!40000 ALTER TABLE `books_book` DISABLE KEYS */;
-INSERT INTO `books_book` VALUES (1,'nginx',6,'2014-06-29');
+INSERT INTO `books_book` VALUES (1,'django',5,'2014-06-30'),(2,'nginx',1,'2014-06-29');
 /*!40000 ALTER TABLE `books_book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +259,7 @@ CREATE TABLE `books_book_authors` (
 
 LOCK TABLES `books_book_authors` WRITE;
 /*!40000 ALTER TABLE `books_book_authors` DISABLE KEYS */;
-INSERT INTO `books_book_authors` VALUES (2,1,1);
+INSERT INTO `books_book_authors` VALUES (1,1,1),(2,2,1);
 /*!40000 ALTER TABLE `books_book_authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +279,7 @@ CREATE TABLE `books_publisher` (
   `country` varchar(50) NOT NULL,
   `website` varchar(200) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +288,7 @@ CREATE TABLE `books_publisher` (
 
 LOCK TABLES `books_publisher` WRITE;
 /*!40000 ALTER TABLE `books_publisher` DISABLE KEYS */;
-INSERT INTO `books_publisher` VALUES (1,'Apress Publishing one','2855 Telegraph Avenue','Berkeley','CA','USA','http://www.apress.com/'),(5,'Apress Publishing','2855 Telegraph Ave.','Berkeley','CA','USA','http://www.apress.com/'),(6,'Ste Pressing','yuquanlu','beijing','beijing','china','http://www.sohu.com/');
+INSERT INTO `books_publisher` VALUES (1,'Apress Publishing one','2855 Telegraph Avenue','Berkeley','CA','USA','http://www.apress.com/'),(5,'Apress Publishing','2855 Telegraph Ave.','Berkeley','CA','USA','http://www.apress.com/');
 /*!40000 ALTER TABLE `books_publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +311,7 @@ CREATE TABLE `django_admin_log` (
   PRIMARY KEY  (`id`),
   KEY `django_admin_log_6340c63c` (`user_id`),
   KEY `django_admin_log_37ef4eb4` (`content_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +320,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2014-06-29 05:12:55',1,7,'6','stepress',1,''),(2,'2014-06-29 05:13:17',1,7,'6','Ste Pressing',2,'Changed name.'),(3,'2014-06-29 08:39:07',1,8,'1','steven lee',1,''),(4,'2014-06-29 09:37:11',1,9,'1','nginx',1,''),(5,'2014-06-29 09:40:58',1,9,'1','nginx',2,'Changed publication_date.');
+INSERT INTO `django_admin_log` VALUES (1,'2014-06-30 08:02:47',1,8,'1','steven lee',1,''),(2,'2014-06-30 08:17:49',1,8,'2','harry wang',1,''),(3,'2014-06-30 08:27:44',1,9,'1','django',1,''),(4,'2014-06-30 08:59:27',1,9,'2','nginx',1,'');
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,7 +373,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('lgmo05dihzqhofhjhcdwmc2veppjkhnq','YTA2MGVkOTZlM2VhOTc0NmRhNzVkZDdhOTkxODBmOGIzNDkyYWQxOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=','2014-07-10 11:02:13'),('4dim1vssps2ilxi4bp8v90kc7272deu5','YTA2MGVkOTZlM2VhOTc0NmRhNzVkZDdhOTkxODBmOGIzNDkyYWQxOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=','2014-07-12 06:38:29'),('9t8wzvii6aixvmmklrxg3e8bhhhex9b8','YTA2MGVkOTZlM2VhOTc0NmRhNzVkZDdhOTkxODBmOGIzNDkyYWQxOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=','2014-07-12 08:32:18'),('e5itmz0b170es0agzlyxltrobll5tnx4','YTA2MGVkOTZlM2VhOTc0NmRhNzVkZDdhOTkxODBmOGIzNDkyYWQxOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=','2014-07-13 05:07:45');
+INSERT INTO `django_session` VALUES ('lgmo05dihzqhofhjhcdwmc2veppjkhnq','YTA2MGVkOTZlM2VhOTc0NmRhNzVkZDdhOTkxODBmOGIzNDkyYWQxOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=','2014-07-10 11:02:13'),('4dim1vssps2ilxi4bp8v90kc7272deu5','YTA2MGVkOTZlM2VhOTc0NmRhNzVkZDdhOTkxODBmOGIzNDkyYWQxOTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=','2014-07-12 06:38:29');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -386,4 +386,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-29 21:56:53
+-- Dump completed on 2014-06-30 19:01:56
