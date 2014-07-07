@@ -1,0 +1,20 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Dislay_Meta</title>
+		<style type="text/css">
+			table {text-align: left;}
+			td {padding-left:10px;padding-right:10px;}
+		</style>
+	</head>
+	<body>
+		<table border=1>
+		{% for k,v in values%}
+			<tr>
+				<td>{{k}}</td>
+				<td>{{v}}</td>
+			</tr>
+		{% endfor %}
+		</table>
+	</body>
+</html>

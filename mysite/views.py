@@ -34,12 +34,17 @@ def hours_ahead(request, offset):
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
     return render_to_response('hours_ahead.html', {'hour_offset': offset, 'next_time': dt})
 
+def current_url_view_good(request):
+	return HttpResponse("Welcome to the page at %s" % request.path)
 
-
-
-
-
-
-
+def display_meta(request):
+	values = request.META.items()
+	values.sort()
+	#html = []
+#	for k, v in values:
+#		html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+#		print "HTMLLLLLLLLLLLLLLLLLLLLL IS: %s" % html
+#	return HttpResponse('<table>%s</table>' % '\n'.join(html))
+	return render_to_response('display_meta.html', {'values': values })
 
 
